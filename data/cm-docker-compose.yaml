@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  annotations:
+    compose.docker.io/filename: docker-compose.yaml
+    compose.docker.io/target: "ipedrazas/c2-flux:latest"
+  name: dapi-compose-cm
+data:
+  docker-compose.yaml: |-
+    version: '3'
+    services:
+      dapi:
+        environment:
+          - DATA_PATH=/data
+        image: harbor.alacasa.uk/library/dapi:latest
+        ports:
+          - 8080:8080
+        volumes:
+          - ./data:/data

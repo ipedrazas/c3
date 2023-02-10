@@ -1,0 +1,11 @@
+apiVersion: c3.docker.io/v1alpha1
+kind: Default
+metadata:
+  name: ns-test
+  namespace: test
+
+spec:
+  ingress: k8s.alacasa.uk
+  useHPA: true
+  replicas: 3
+  storageClass: longhorn

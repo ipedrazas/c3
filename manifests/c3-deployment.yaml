@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: c3
+  name: c3ctl
+  namespace: c3
+spec:
+  selector:
+    matchLabels:
+      app: c3ctl
+  template:
+    metadata:
+      labels:
+        app: c3ctl
+    spec:
+      serviceAccountName: c3-admin
+      containers:
+        - name: c3ctl
+          image: ipedrazas/c3:latest
+          imagePullPolicy: Always
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+              
